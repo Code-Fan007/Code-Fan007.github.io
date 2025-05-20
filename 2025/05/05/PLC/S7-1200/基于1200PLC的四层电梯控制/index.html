@@ -1,0 +1,586 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="高级的欲望，只有克制才能达成" href="https://code-fan007.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="高级的欲望，只有克制才能达成" href="https://code-fan007.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="高级的欲望，只有克制才能达成" href="https://code-fan007.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="PLC" />
+
+
+<link rel="canonical" href="https://code-fan007.github.io/2025/05/05/PLC/S7-1200/%E5%9F%BA%E4%BA%8E1200PLC%E7%9A%84%E5%9B%9B%E5%B1%82%E7%94%B5%E6%A2%AF%E6%8E%A7%E5%88%B6/">
+
+
+
+  <title>
+基于1200PLC的四层电梯控制 - PLC |
+Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">基于1200PLC的四层电梯控制
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2025-05-05 12:22:02">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2025-05-05T12:22:02+08:00">2025-05-05</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>2.4k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>2 分钟</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Fan Lei's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://dlink.host/wx3.sinaimg.cn/large/007WNxAGly8hra3livtspj30p00ixtct.jpg"></li>
+          <li class="item" data-background-image="https://dlink.host/wx1.sinaimg.cn/large/007WNxAGly8hra3okv00lj31c00u0qf1.jpg"></li>
+          <li class="item" data-background-image="https://pan.imgbed.link/file/67529"></li>
+          <li class="item" data-background-image="https://pan.imgbed.link/file/67528"></li>
+          <li class="item" data-background-image="https://pan.imgbed.link/file/67545"></li>
+          <li class="item" data-background-image="https://dlink.host/wx3.sinaimg.cn/large/007WNxAGly8hra3lljz4wj30rs0fmjsz.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/PLC/" itemprop="item" rel="index" title="分类于 PLC"><span itemprop="name">PLC</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="https://code-fan007.github.io/2025/05/05/PLC/S7-1200/%E5%9F%BA%E4%BA%8E1200PLC%E7%9A%84%E5%9B%9B%E5%B1%82%E7%94%B5%E6%A2%AF%E6%8E%A7%E5%88%B6/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="FanLei">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="高级的欲望，只有克制才能达成">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="绪论引言"><a class="markdownIt-Anchor" href="#绪论引言">#</a> 绪论引言</h1>
+<p>电梯是安装在建筑物内的一种交通工具，是为了满足人们对于垂直运输的需要而建立的。在现代社会，电梯就如同汽车、轮船一般不可或缺。随着城市建设的不断发展，楼群建筑不断增多，电梯在当今社会的生活中有着广泛的应用。如今，电梯的使用情况已成为衡量现代化发展程度的一种标志，从某种意义上说，电梯也成为研究一个城市中居民生活状态的最完美空间。而电梯作为一种公共交通工具，安全性能显得尤为重要，因为只有安全运行才能够使乘客对电梯产生信任感。随着高层建筑的不断出现，人们对电梯系统的性能要求也越来越高，不单单是安全性，还包括舒适度等方面。<br>
+电梯作为楼群建筑中垂直运行的交通工具已与人们的日常生活密不可分。电梯实际上是一个人机交互式的控制系统，单纯用顺序控制或逻辑控制是不能满足控制要求的，因此，大部分电梯控制系统都采用随机逻辑方式控制。目前电梯的控制普遍采用了两种方式，一是采用微机作为信号控制单元，完成电梯信号的采集、运行状态和功能的设定，实现电梯的自动调度和集选运行的功能，拖动控制则由变频器来完成；第二种控制方式用可编程控制器（PLC）取代微机实现信号集选控制。从控制方式和性能上来说，这两种方法并没有太大的区别。国内厂家大多选择第二种方式，其原因在于生产规模较小，自己设计和制造微机控制装置成本较高；而 PLC 可靠性高，程序设计方便灵活，抗干扰能力强、运行稳定、可靠性高等特点，所以现在的电梯控制系统广泛采用可编程控制器（PLC）来实现。</p>
+<h1 id="控制系统设计与实现"><a class="markdownIt-Anchor" href="#控制系统设计与实现">#</a> 控制系统设计与实现</h1>
+<h2 id="21控制要求"><a class="markdownIt-Anchor" href="#21控制要求">#</a> 2.1 控制要求</h2>
+<p>当电梯停于 1F，2F 或 3F 时，高于其当前停靠楼层单个呼叫或者同时呼叫时，按照高低顺序上行。在上行过程中若存在下行呼叫，优先执行上行过程。<br>
+当电梯停于 4F，3F 或 2F 时，低于其当前停靠楼层单个呼叫或者同时呼叫时，按照高低顺序依次下行停靠 3S。在下行过程中若存在上行呼叫优先执行下行过程。电梯停于某层时，数码管应显示该层的楼层数。</p>
+<h2 id="22控制方案及流程图"><a class="markdownIt-Anchor" href="#22控制方案及流程图">#</a> 2.2 控制方案及流程图</h2>
+<p>本项目要实现一个安全、高效的电梯运行方案。系统通过响应内呼和外呼请求，使电梯到目标楼层，并在到达后停靠，同时确保电梯门的安全操作。控制方案涵盖了开关门设计、楼层停靠逻辑、内部和外部呼叫处理，以及上下行控制设计，并通过仿真测试验证了其有效性。</p>
+<h2 id="23-io分配表"><a class="markdownIt-Anchor" href="#23-io分配表">#</a> 2.3 I/O 分配表</h2>
+<h1 id="3梯形图程序设计"><a class="markdownIt-Anchor" href="#3梯形图程序设计">#</a> 3 梯形图程序设计</h1>
+<h2 id="31开关电梯门设计"><a class="markdownIt-Anchor" href="#31开关电梯门设计">#</a> 3.1 开关电梯门设计</h2>
+<p>系统在接收到停靠等待信号后，首先设置开门中和上客标志。接着，利用定时器 TON，当开门中信号激活时，1 秒后触发开门操作。门的开启由自动和手动开门信号以及开门限位信号共同控制。门完全打开后，若开门限位信号被触发，系统将再次启动定时器，1 秒后开始关门。关门操作同样由自动和手动关门信号及关门限位信号控制。关门完成后，经过 2 秒的延时，系统更新状态，增加特定值并结束等待状态。当门的开关操作完全结束，系统将复位开门中信号，并设置开关门完成标志。最后，3 秒后，系统复位上客标志和开关门完成标志，准备进行下一轮操作。</p>
+<h2 id="32楼层停靠设计"><a class="markdownIt-Anchor" href="#32楼层停靠设计">#</a> 3.2 楼层停靠设计</h2>
+<p>通过检测楼层指示信号（如内呼 1 楼、2 楼、3 楼、4 楼）和相应的平层信号（如平层 1M、2M、3M、4M），来激活对应的楼层指示。同时，通过上升指示和下降指示来控制电梯的运行方向。此外，“mydb”. 停靠等待和 &quot;mydb&quot;. 等待结束信号用于管理电梯在停靠时的逻辑，确保电梯在接收到新的请求前已经完全停止并准备好。</p>
+<h2 id="33内外部呼叫设计"><a class="markdownIt-Anchor" href="#33内外部呼叫设计">#</a> 3.3 内外部呼叫设计</h2>
+<p>内部呼叫设计：<br>
+电梯对 1 楼至 4 楼的内呼请求作出响应。当相应的内呼楼层信号（如 1 楼的 % M0.4、2 楼的 % M0.5、3 楼的 % M0.6、4 楼的 % M0.7）为真，且电梯已到达该楼层（如 1 楼的 % M0.0、2 楼的 % M0.1、3 楼的 % M0.2、4 楼的 % M0.3），并且电梯不在等待状态（“mydb”. 停靠等待为假），电梯的启动逻辑被激活。电梯将保持运行状态，直至对应的内呼楼层指示信号（如 1 楼的 % M10.4、2 楼的 % M10.5、3 楼的 % M10.6、4 楼的 % M10.7）为真，触发停止条件，使电梯停止。通过启保停功能块，确保电梯在接收到楼层呼叫请求时启动，并在到达目标楼层后停止，有效防止电梯在未到达目标楼层前意外停止，同时确保服务完成后能及时响应其他楼层的呼叫。<br>
+外部呼叫设计：<br>
+当相应的外呼信号被激活，且电梯不在当前楼层，并且电梯不在相反方向的运行状态，则激活相应的外呼上行或下行指示。<br>
+1 楼外呼上行与 4 楼外呼下行程序段一样。<br>
+2 楼外呼上行与与 2 楼外呼下行，3 楼外呼上行，3 楼外呼下行的程序段一样。</p>
+<h2 id="34上下行控制设计"><a class="markdownIt-Anchor" href="#34上下行控制设计">#</a> 3.4 上下行控制设计</h2>
+<p>电梯控制系统根据内呼和外呼的楼层指示信号，结合上次层记录与当前楼层的比较结果，以及上升和下降的极限标志位，来决定激活相应的上升或下降指示位，以及上客标志位，以实现电梯的自动楼层响应和运行。</p>
+<h1 id="4程序实现"><a class="markdownIt-Anchor" href="#4程序实现">#</a> 4 程序实现</h1>
+<p>视频链接</p>
+<h1 id="5结-论"><a class="markdownIt-Anchor" href="#5结-论">#</a> 5 结  论</h1>
+<p>本项目旨在设计并实现一个基于可编程控制器（PLC）的四层电梯控制系统。通过对电梯控制要求的深入分析和系统设计，我们成功构建了一个能够满足现代电梯安全、高效运行需求的控制方案。<br>
+在控制要求方面，定义了电梯在不同楼层停靠时的响应策略，包括上行和下行过程中的呼叫处理逻辑，以及电梯门的开关控制流程。通过 I/O 分配表，为电梯的各个控制信号提供了明确的输入输出接口，为后续的硬件连接和程序编写奠定了基础。<br>
+在系统设计方面，将电梯的控制流程分解为开关门设计、楼层停靠设计、内外部呼叫设计、上下行控制设计等模块。通过仿真测试验证了设计的准确性和可靠性。<br>
+仿真测试阶段，我们通过模拟电梯的实际运行情况，对电梯控制系统进行了全面的测试。测试结果表明，电梯能够根据乘客的呼叫请求，准确无误地响应并执行相应的楼层停靠和门控制操作，验证了我们设计的控制系统的有效性和实用性。<br>
+综上所述，本项目成功实现了一个基于 PLC 的四层电梯控制系统，在安全性、可靠性和用户舒适度方面均达到了预期的设计目标。通过本项目的设计和实施，我深入理解了 PLC 在复杂控制系统中的应用，为未来在自动化领域的进一步学习和研究打下了坚实的基础。</p>
+
+      <div class="tags">
+          <a href="/tags/PLC/" rel="tag"><i class="ic i-tag"></i> PLC</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2025-05-20 15:01:38" itemprop="dateModified" datetime="2025-05-20T15:01:38+08:00">2025-05-20</time>
+  </span>
+  <span id="2025/05/05/PLC/S7-1200/基于1200PLC的四层电梯控制/" class="item leancloud_visitors" data-flag-title="基于1200PLC的四层电梯控制" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="FanLei 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay1.png" alt="FanLei 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="FanLei 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>FanLei <i class="ic i-at"><em>@</em></i>高级的欲望，只有克制才能达成
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="https://code-fan007.github.io/2025/05/05/PLC/S7-1200/%E5%9F%BA%E4%BA%8E1200PLC%E7%9A%84%E5%9B%9B%E5%B1%82%E7%94%B5%E6%A2%AF%E6%8E%A7%E5%88%B6/" title="基于1200PLC的四层电梯控制">https://code-fan007.github.io/2025/05/05/PLC/S7-1200/基于1200PLC的四层电梯控制/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2025/04/25/%E5%BF%AB%E9%80%9F%E6%89%BE%E5%88%B0%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E7%9A%84%E6%96%B9%E6%B3%95/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pan.imgbed.link&#x2F;file&#x2F;67545" title="快速找到参考文献的方法">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>快速找到参考文献的方法</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%AA%E8%AE%BA%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 绪论引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text"> 控制系统设计与实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#21%E6%8E%A7%E5%88%B6%E8%A6%81%E6%B1%82"><span class="toc-number">2.1.</span> <span class="toc-text"> 2.1 控制要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22%E6%8E%A7%E5%88%B6%E6%96%B9%E6%A1%88%E5%8F%8A%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">2.2.</span> <span class="toc-text"> 2.2 控制方案及流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23-io%E5%88%86%E9%85%8D%E8%A1%A8"><span class="toc-number">2.3.</span> <span class="toc-text"> 2.3 I&#x2F;O 分配表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E6%A2%AF%E5%BD%A2%E5%9B%BE%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text"> 3 梯形图程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#31%E5%BC%80%E5%85%B3%E7%94%B5%E6%A2%AF%E9%97%A8%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.1.</span> <span class="toc-text"> 3.1 开关电梯门设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#32%E6%A5%BC%E5%B1%82%E5%81%9C%E9%9D%A0%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.2.</span> <span class="toc-text"> 3.2 楼层停靠设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#33%E5%86%85%E5%A4%96%E9%83%A8%E5%91%BC%E5%8F%AB%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.3.</span> <span class="toc-text"> 3.3 内外部呼叫设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#34%E4%B8%8A%E4%B8%8B%E8%A1%8C%E6%8E%A7%E5%88%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.4.</span> <span class="toc-text"> 3.4 上下行控制设计</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text"> 4 程序实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5%E7%BB%93-%E8%AE%BA"><span class="toc-number">5.</span> <span class="toc-text"> 5 结  论</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2025/04/05/PLC/S7-1200/S7-1200%20PLC/" rel="bookmark" title="S7-1200 PLC">S7-1200 PLC</a></li><li><a href="/2025/04/05/PLC/Smart200/SMART200%20PLC/" rel="bookmark" title="SMART200 PLC">SMART200 PLC</a></li><li class="active"><a href="/2025/05/05/PLC/S7-1200/%E5%9F%BA%E4%BA%8E1200PLC%E7%9A%84%E5%9B%9B%E5%B1%82%E7%94%B5%E6%A2%AF%E6%8E%A7%E5%88%B6/" rel="bookmark" title="基于1200PLC的四层电梯控制">基于1200PLC的四层电梯控制</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="FanLei"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">FanLei</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">25</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">6</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">16</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL0NvZGUtRmFuMDA3" title="https:&#x2F;&#x2F;github.com&#x2F;Code-Fan007"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTE1NjIwNzY0Njg=" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1562076468"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOjE3Mzg4NzQ0MzZAcXEuY29t" title="mailto:1738874436@qq.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/favorites/" rel="section"><i class="ic i-star"></i>收藏</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Novel/" title="分类于 Novel">Novel</a>
+</div>
+
+    <span><a href="/2024/07/01/Novel/my-novel/%E5%90%8D%E4%BA%BA%E5%8A%B1%E5%BF%97%E5%A5%8B%E6%96%97%E5%8F%B2/" title="名人励志奋斗史">名人励志奋斗史</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/04/25/%E5%BF%AB%E9%80%9F%E6%89%BE%E5%88%B0%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E7%9A%84%E6%96%B9%E6%B3%95/" title="快速找到参考文献的方法">快速找到参考文献的方法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/12/25/opencv/%E5%9F%BA%E4%BA%8E%E6%89%8B%E9%83%A8%E8%B7%9F%E8%B8%AA%E5%AE%9E%E7%8E%B0%E9%9F%B3%E9%87%8F%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%8E%A7%E5%88%B6/" title="基于手部跟踪实现音量大小的控制">基于手部跟踪实现音量大小的控制</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Novel/" title="分类于 Novel">Novel</a>
+</div>
+
+    <span><a href="/2024/07/01/Novel/Diary/%E5%A4%A7%E5%AD%A6%E4%B9%8B%E8%B7%AF%E6%B2%88%E9%98%B3%E7%AF%87/" title="大学之路沈阳篇">大学之路沈阳篇</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PLC/" title="分类于 PLC">PLC</a>
+</div>
+
+    <span><a href="/2025/05/05/PLC/S7-1200/%E5%9F%BA%E4%BA%8E1200PLC%E7%9A%84%E5%9B%9B%E5%B1%82%E7%94%B5%E6%A2%AF%E6%8E%A7%E5%88%B6/" title="基于1200PLC的四层电梯控制">基于1200PLC的四层电梯控制</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/08/06/git%E7%9A%84%E4%BD%BF%E7%94%A8/" title="git的使用">git的使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/09/01/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" title="自动控制原理">自动控制原理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/03/10/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/" title="硬件基础">硬件基础</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/09/06/%E5%88%B7C%E8%AF%AD%E8%A8%80150%E9%81%93%E9%A2%98%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="刷C语言150道题复习笔记">刷C语言150道题复习笔记</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Embedded/" title="分类于 Embedded">Embedded</a>
+</div>
+
+    <span><a href="/2024/07/10/Embedded/51MCU/51%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%80%E7%B3%BB%E5%88%97/" title="51单片机一系列">51单片机一系列</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">FanLei @ Fan Lei's Blog</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="站点总字数">34k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="站点阅读时长">31 分钟</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2025/05/05/PLC/S7-1200/基于1200PLC的四层电梯控制/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
