@@ -76,7 +76,7 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
       <i class="ic i-pen"></i>
     </span>
     <span class="text">本文字数</span>
-    <span>0</span>
+    <span>858</span>
     <span class="text">字</span>
   </span>
   <span class="item" title="阅读时长">
@@ -117,12 +117,12 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://pan.imgbed.link/file/67544"></li>
-          <li class="item" data-background-image="https://pan.imgbed.link/file/67543"></li>
+          <li class="item" data-background-image="https://pan.imgbed.link/file/67529"></li>
           <li class="item" data-background-image="https://pan.imgbed.link/file/67525"></li>
-          <li class="item" data-background-image="https://pan.imgbed.link/file/67548"></li>
-          <li class="item" data-background-image="https://dlink.host/wx3.sinaimg.cn/large/007WNxAGly8hra3lljz4wj30rs0fmjsz.jpg"></li>
-          <li class="item" data-background-image="https://dlink.host/wx1.sinaimg.cn/large/007WNxAGly8hra3okv00lj31c00u0qf1.jpg"></li>
+          <li class="item" data-background-image="https://pan.imgbed.link/file/67549"></li>
+          <li class="item" data-background-image="https://pan.imgbed.link/file/67530"></li>
+          <li class="item" data-background-image="https://pan.imgbed.link/file/67524"></li>
+          <li class="item" data-background-image="https://pan.imgbed.link/file/67543"></li>
         </ul>
       </div>
     </header>
@@ -168,7 +168,50 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
   <div class="body md" itemprop="articleBody">
     
 
-    
+    <h1 id="1案例控制要求"><a class="markdownIt-Anchor" href="#1案例控制要求">#</a> 1 案例控制要求：</h1>
+<p>某家电制造厂有一批洗衣机制造订单，具体的控制要求如下：<br>
+（1）接通电源后，系统进入初始状态，准备起动；<br>
+（2）按下系统启动按钮，开始进水，水位到达高水位后停止进水，并开始正转洗涤；正转洗涤 15S 后暂停 3S<br>
+（3）3S 后开始反转，反转 15S 后暂停<br>
+（4）暂停 3S 后若正反洗涤次数未满 10 次，则返回继续正转洗涤<br>
+（5）若正反洗涤次数达到 10 次，则开始排水。水位降到低水位时，开始脱水并继续排水<br>
+（6）脱水 10S 后即完成一次大循环，大循环未满 6 次，则返回到初始进水的动作；进行下一次大循环。<br>
+（7）若完成了 6 次大循环，则进行洗完报警；报警 10S 后结束全部过程，自动停机<br>
+（8）在洗涤任何阶段，按下停止则终止洗涤</p>
+<h1 id="2控制方案"><a class="markdownIt-Anchor" href="#2控制方案">#</a> 2 控制方案：</h1>
+<ul>
+<li>第一步可以使用初始化对其用到的所有中间变量点进行复位<br>
+初始化对所有使用到的 M 点复位</li>
+</ul>
+<p>图<br>
+完成大循环后报警时间到系统停止、按下系统停止按钮，系统也会停止</p>
+<ul>
+<li>第二步按下启动后进水阀需要进水，在达到高水位后，停止进水；并且根据第六点控制要求，在未达到大循环次数时也需要进水，梯形图程序如下：<br>
+按下启动按钮，进水阀开始进水，水满后停止进水</li>
+<li>第三步则是水满后进行正转洗涤部分；并且没达到洗涤次数时，需循环洗涤<br>
+水满后正转洗涤 15s</li>
+</ul>
+<p>洗涤后 15s 后暂停 3s</p>
+<ul>
+<li>第四步在正转到达时间暂停后反转洗涤<br>
+暂停 3s 后反转洗涤 15s</li>
+</ul>
+<p>反转洗涤 15s 后暂停 3s</p>
+<ul>
+<li>第五步反转暂停后完成一个周期进行计数，并判断是否达到正反洗涤次数，未达到则回到程序段四继续正转洗涤，达到则开始排水。</li>
+</ul>
+<p>在排水或系统停止后对洗涤次数清零</p>
+<ul>
+<li>第六步：达到正反洗涤次数后开始排水，当排水到达低限位后继续排水并开始脱水。<br>
+脱水 10s 后停水排水和脱水</li>
+</ul>
+<p>为了防止在未达到大循环次数就直接进水时，在此处增设一个在脱水断开时置位一个中间状态位来作为进水的一个条件。</p>
+<ul>
+<li>第七步：脱水完成一次记一次数，同样的当系统停止或周期完成报警时对其进行复位。<br>
+当大循环次数到达设定次数时，发出完成报警！未完成设定次数则回到程序段 3 继续进水开始洗涤</li>
+<li>第八步：达到大循环次数后触发报警，报警完成后系统停止，等待下一轮的工作。</li>
+</ul>
+
       <div class="tags">
           <a href="/tags/PLC/" rel="tag"><i class="ic i-tag"></i> PLC</a>
       </div>
@@ -182,7 +225,7 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2025-05-21 12:09:59" itemprop="dateModified" datetime="2025-05-21T12:09:59+08:00">2025-05-21</time>
+    <time title="修改时间：2025-05-27 18:14:14" itemprop="dateModified" datetime="2025-05-27T18:14:14+08:00">2025-05-27</time>
   </span>
   <span id="2025/05/05/PLC/Smart200/基于Smart200的全自动洗衣机控制/" class="item leancloud_visitors" data-flag-title="基于Smart200的全自动洗衣机控制" title="阅读次数">
       <span class="icon">
@@ -245,7 +288,7 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
     <div class="item left">
       
 
-  <a href="/2025/04/25/%E5%BF%AB%E9%80%9F%E6%89%BE%E5%88%B0%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E7%9A%84%E6%96%B9%E6%B3%95/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pan.imgbed.link&#x2F;file&#x2F;67543" title="快速找到参考文献的方法">
+  <a href="/2025/04/25/%E5%BF%AB%E9%80%9F%E6%89%BE%E5%88%B0%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E7%9A%84%E6%96%B9%E6%B3%95/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;pan.imgbed.link&#x2F;file&#x2F;67548" title="快速找到参考文献的方法">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>快速找到参考文献的方法</h3>
@@ -255,7 +298,7 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
     <div class="item right">
       
 
-  <a href="/2025/05/05/PLC/S7-1200/%E5%9F%BA%E4%BA%8E1200PLC%E7%9A%84%E5%9B%9B%E5%B1%82%E7%94%B5%E6%A2%AF%E6%8E%A7%E5%88%B6/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;pan.imgbed.link&#x2F;file&#x2F;67545" title="基于1200PLC的四层电梯控制">
+  <a href="/2025/05/05/PLC/S7-1200/%E5%9F%BA%E4%BA%8E1200PLC%E7%9A%84%E5%9B%9B%E5%B1%82%E7%94%B5%E6%A2%AF%E6%8E%A7%E5%88%B6/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;pan.imgbed.link&#x2F;file&#x2F;67547" title="基于1200PLC的四层电梯控制">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> PLC</span>
   <h3>基于1200PLC的四层电梯控制</h3>
@@ -277,6 +320,7 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E6%A1%88%E4%BE%8B%E6%8E%A7%E5%88%B6%E8%A6%81%E6%B1%82"><span class="toc-number">1.</span> <span class="toc-text"> 1 案例控制要求：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E6%8E%A7%E5%88%B6%E6%96%B9%E6%A1%88"><span class="toc-number">2.</span> <span class="toc-text"> 2 控制方案：</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
@@ -397,10 +441,19 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
   <li class="item">
     
 <div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/04/25/%E5%BF%AB%E9%80%9F%E6%89%BE%E5%88%B0%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E7%9A%84%E6%96%B9%E6%B3%95/" title="快速找到参考文献的方法">快速找到参考文献的方法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 <a href="/categories/PLC/" title="分类于 PLC">PLC</a>
 </div>
 
-    <span><a href="/2025/04/05/PLC/S7-1200/S7-1200%20PLC/" title="S7-1200 PLC">S7-1200 PLC</a></span>
+    <span><a href="/2025/05/05/PLC/S7-1200/%E5%9F%BA%E4%BA%8E1200PLC%E7%9A%84%E5%9B%9B%E5%B1%82%E7%94%B5%E6%A2%AF%E6%8E%A7%E5%88%B6/" title="基于1200PLC的四层电梯控制">基于1200PLC的四层电梯控制</a></span>
   </li>
 
       
@@ -409,17 +462,16 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2024/07/01/Novel/Diary/about/" title="about me">about me</a></span>
+    <span><a href="/2024/10/08/%E7%88%AC%E8%99%AB%E4%B8%80%E7%B3%BB%E5%88%97/" title="爬虫一系列">爬虫一系列</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/RaspberryPi/" title="分类于 树莓派">树莓派</a>
 </div>
 
-    <span><a href="/2024/07/03/RaspberryPi/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%85%A5%E9%97%A8%E9%85%8D%E7%BD%AE/" title="树莓派入门配置">树莓派入门配置</a></span>
+    <span><a href="/2024/09/06/%E5%88%B7C%E8%AF%AD%E8%A8%80150%E9%81%93%E9%A2%98%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="刷C语言150道题复习笔记">刷C语言150道题复习笔记</a></span>
   </li>
 
       
@@ -436,10 +488,10 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/Project/" title="分类于 Project">Project</a>
+<a href="/categories/Embedded/" title="分类于 Embedded">Embedded</a>
 </div>
 
-    <span><a href="/2024/07/06/Project/%E5%9F%BA%E4%BA%8Earduino%E7%9A%84%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92%E5%9B%9B%E8%B6%B3%E6%9C%BA%E6%A2%B0%E8%9C%98%E8%9B%9B/" title="基于arduino的语音交互四足机械蜘蛛">基于arduino的语音交互四足机械蜘蛛</a></span>
+    <span><a href="/2024/07/20/Embedded/STM32/Stm32%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%80%E7%B3%BB%E5%88%97/" title="STM32单片机一系列">STM32单片机一系列</a></span>
   </li>
 
       
@@ -455,19 +507,10 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
   <li class="item">
     
 <div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/09/06/%E5%88%B7C%E8%AF%AD%E8%A8%80150%E9%81%93%E9%A2%98%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="刷C语言150道题复习笔记">刷C语言150道题复习笔记</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/Novel/" title="分类于 Novel">Novel</a>
 </div>
 
-    <span><a href="/2024/07/01/Novel/my-novel/%E5%90%8D%E4%BA%BA%E5%8A%B1%E5%BF%97%E5%A5%8B%E6%96%97%E5%8F%B2/" title="名人励志奋斗史——罗永浩">名人励志奋斗史——罗永浩</a></span>
+    <span><a href="/2023/07/01/Novel/Diary/%E5%A4%A7%E5%AD%A6%E4%B9%8B%E8%B7%AF%E6%B2%88%E9%98%B3%E7%AF%87/" title="大学之路沈阳篇">大学之路沈阳篇</a></span>
   </li>
 
       
@@ -483,10 +526,10 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/Project/" title="分类于 Project">Project</a>
+<a href="/categories/game/" title="分类于 game">game</a>
 </div>
 
-    <span><a href="/2024/07/07/Project/%E5%9F%BA%E4%BA%8E%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E5%9B%9B%E8%B6%B3%E6%9C%BA%E5%99%A8%E7%8B%97/" title="基于树莓派的四足机器狗">基于树莓派的四足机器狗</a></span>
+    <span><a href="/2024/07/07/game_First_Demo/" title="game_First_Demo">game_First_Demo</a></span>
   </li>
 
   </ul>
@@ -511,13 +554,13 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">34k 字</span>
+    <span title="站点总字数">35k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">31 分钟</span>
+    <span title="站点阅读时长">32 分钟</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
