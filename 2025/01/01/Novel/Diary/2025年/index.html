@@ -24,15 +24,15 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
-  <meta name="keywords" content="git" />
+  <meta name="keywords" content="Diary" />
 
 
-<link rel="canonical" href="https://code-fan007.github.io/2024/08/06/git%E7%9A%84%E4%BD%BF%E7%94%A8/">
+<link rel="canonical" href="https://code-fan007.github.io/2025/01/01/Novel/Diary/2025%E5%B9%B4/">
 
 
 
   <title>
-git的使用 |
+2025年 - Novel |
 Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
 <meta name="generator" content="Hexo 7.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -60,23 +60,23 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">git的使用
+  <h1 itemprop="name headline">2025年
   </h1>
   
 <div class="meta">
-  <span class="item" title="创建时间：2024-08-06 12:22:02">
+  <span class="item" title="创建时间：2025-01-01 16:00:00">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">发表于</span>
-    <time itemprop="dateCreated datePublished" datetime="2024-08-06T12:22:02+08:00">2024-08-06</time>
+    <time itemprop="dateCreated datePublished" datetime="2025-01-01T16:00:00+08:00">2025-01-01</time>
   </span>
   <span class="item" title="本文字数">
     <span class="icon">
       <i class="ic i-pen"></i>
     </span>
     <span class="text">本文字数</span>
-    <span>911</span>
+    <span>464</span>
     <span class="text">字</span>
   </span>
   <span class="item" title="阅读时长">
@@ -117,12 +117,12 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://pan.imgbed.link/file/67530"></li>
-          <li class="item" data-background-image="https://pan.imgbed.link/file/67527"></li>
-          <li class="item" data-background-image="https://pan.imgbed.link/file/67544"></li>
-          <li class="item" data-background-image="https://pan.imgbed.link/file/67543"></li>
-          <li class="item" data-background-image="https://pan.imgbed.link/file/67546"></li>
-          <li class="item" data-background-image="https://pan.imgbed.link/file/67547"></li>
+          <li class="item" data-background-image="https://dlink.host/wx3.sinaimg.cn/large/007WNxAGly8hra3lljz4wj30rs0fmjsz.jpg"></li>
+          <li class="item" data-background-image="https://dlink.host/wx1.sinaimg.cn/large/007WNxAGly8hra3oxwhj1j30xc0m8q8j.jpg"></li>
+          <li class="item" data-background-image="https://pan.imgbed.link/file/67541"></li>
+          <li class="item" data-background-image="https://pan.imgbed.link/file/67523"></li>
+          <li class="item" data-background-image="https://pan.imgbed.link/file/67525"></li>
+          <li class="item" data-background-image="https://pan.imgbed.link/file/67540"></li>
         </ul>
       </div>
     </header>
@@ -147,11 +147,13 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">首页</a></span>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Novel/" itemprop="item" rel="index" title="分类于 Novel"><span itemprop="name">Novel</span></a>
+<meta itemprop="position" content="1" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
-  <link itemprop="mainEntityOfPage" href="https://code-fan007.github.io/2024/08/06/git%E7%9A%84%E4%BD%BF%E7%94%A8/">
+  <link itemprop="mainEntityOfPage" href="https://code-fan007.github.io/2025/01/01/Novel/Diary/2025%E5%B9%B4/">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -166,31 +168,20 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <p>windows 和 linux 都可以（我偏向于 linux），windows 下可以安装 git bash（配合小乌龟图形化也不错的）；linux 下直接安装 git 即可。</p>
-<h1 id="ssh配置和克隆仓库"><a class="markdownIt-Anchor" href="#ssh配置和克隆仓库">#</a> ssh 配置和克隆仓库</h1>
-<p>ssh 协议：在推送的时候不需要验证用户名和密码，但是需要在 git clone 的时候配置 ssh 密钥。（推荐）安全又方便。<br>
-在克隆时候会报错<br>
-<img data-src="image/%E5%85%B6%E4%BB%96/git%E7%9A%84%E4%BD%BF%E7%94%A8/%E5%88%9D%E6%AC%A1%E4%BD%BF%E7%94%A8ssh%E5%8D%8F%E8%AE%AEgit%E5%85%8B%E9%9A%86%E6%8A%A5%E9%94%99.png" alt="alt text"><br>
- 这是因为没有配置 ssh 秘钥导致的，使用 ssh 方式必须配置 ssh 秘钥。<br>
-配置过程：</p>
-<ul>
-<li>首先，退出到根目录，再进入.ssh 目录，然后使用 ssh-key generate 命令生成秘钥对；回车</li>
-</ul>
-<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre>cd </pre></td></tr><tr><td data-num="2"></td><td><pre>cd <span class="token punctuation">.</span>ssh</pre></td></tr><tr><td data-num="3"></td><td><pre>ssh<span class="token operator">-</span>keygen <span class="token operator">-</span>t rsa <span class="token operator">-</span>b <span class="token number">4096</span></pre></td></tr></table></figure><p>回车之后，它提示我们需要输入秘钥的文件名称，取一个名字就行，不然就把原来的覆盖住了</p>
-<ul>
-<li>注意：如果第一次使用，直接回车就可以了</li>
-</ul>
-<p>如果是 windows ，可以在 git 的 bash 输入 cd ~ ，然后打下 pwd 看下自己的～目录在哪里，.ssh 一般就在这个目录下<br>
-本地目录：</p>
-<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre>ls <span class="token operator">-</span>ltr</pre></td></tr></table></figure><p>没有任何扩展名的这个文件是<strong>私钥文件</strong>；而以.pub 结尾的这个文件是<strong>公钥文件</strong>，公钥文件的内容可以直接复制粘贴到 github 或者 gitee 的 ssh 公钥管理页面。<br>
-回到 github，在主页的右上角点击头像，然后点击 settings，选择 SSH and GPG keys，点击 New SSH key，把公钥文件的内容粘贴进去，取一个任意的名字，点击 Add SSH key 即可。</p>
-<p>第一次配置的话完成，到这里就完成了，但是如果刚刚取名字的是新文件那么需要</p>
-<figure class="highlight javascript"><figcaption data-lang="javascript"></figcaption><table><tr><td data-num="1"></td><td><pre>vi 新文件名字<span class="token punctuation">.</span>pub</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token comment">// 把下面这五行内容添加到文件里面</span></pre></td></tr><tr><td data-num="3"></td><td><pre>tail <span class="token operator">-</span><span class="token number">5</span> config</pre></td></tr><tr><td data-num="4"></td><td><pre>#github</pre></td></tr><tr><td data-num="5"></td><td><pre>Host github<span class="token punctuation">.</span>com</pre></td></tr><tr><td data-num="6"></td><td><pre>HostName github<span class="token punctuation">.</span>com</pre></td></tr><tr><td data-num="7"></td><td><pre>PreferredAuthentications publickey</pre></td></tr><tr><td data-num="8"></td><td><pre>IdentityFile <span class="token operator">~</span><span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span>text</pre></td></tr></table></figure><p>上面的这内容意思是当我们使用 ssh 协议连接 github 的时候，使用 **~/.ssh/ 新文件名字 ** 这个私钥文件。<br>
-全部完了后，再次克隆。<br>
-如果失败 https://docs.github.com/zh/authentication/troubleshooting-ssh/using-ssh-over-the-https-port</p>
+    <h1 id="2025年3月3日"><a class="markdownIt-Anchor" href="#2025年3月3日">#</a> 2025 年 3 月 3 日</h1>
+<p>孤单是一种状态，孤独却是一种感受，有的时候会享受孤单，但有的时候也得忍受孤独</p>
+<h1 id="2025年5月6日"><a class="markdownIt-Anchor" href="#2025年5月6日">#</a> 2025 年 5 月 6 日</h1>
+<h2 id="帮别人前先顾好自己"><a class="markdownIt-Anchor" href="#帮别人前先顾好自己">#</a> 帮别人前先顾好自己</h2>
+<p>给任何人帮忙，都不能给自己造成困扰，可以帮忙，但帮忙的前提是不能把自己绕进去，否则就不是帮忙，是给自己找麻烦，别人的事再大，都不能以损失自己的利益为代价去帮忙，否则就是在给自己挖坑，没有人会感恩你付出的代价，他们只会庆幸自己渡过了难关，至于你被拉下水没有，他们并不关心</p>
+<h1 id="2025年5月29日"><a class="markdownIt-Anchor" href="#2025年5月29日">#</a> 2025 年 5 月 29 日</h1>
+<h2 id="要有被讨厌的勇气"><a class="markdownIt-Anchor" href="#要有被讨厌的勇气">#</a> 要有被讨厌的勇气</h2>
+<p>紧张无非两点，一是把对方看得太重，二是把自己的表现看得太重要，要学会带着评委的心态入场，要有评价别人的心态，千万别把自己当参赛选手，那样就是在让出主动权，要学会祛魅冷场责任感，不用强装活泼开朗，不用执着能否给别人好印象，别太功利化，也别指望一个场景的聊天交谈就能收获青睐，无所求就无所畏惧。</p>
+<p>最重要的一点，无所求就无所畏惧。</p>
+<p>过去都是假的，回忆是一条没有归途的路，以往的一切春天都无法复原，即使最狂热最坚贞的爱情，归根结底也不过是一种瞬息即逝的现实，唯有孤独永恒。<br>
+—— 马尔克斯《百年孤独》</p>
 
       <div class="tags">
-          <a href="/tags/git/" rel="tag"><i class="ic i-tag"></i> git</a>
+          <a href="/tags/Diary/" rel="tag"><i class="ic i-tag"></i> Diary</a>
       </div>
   </div>
 
@@ -202,9 +193,9 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2024-08-07 20:41:31" itemprop="dateModified" datetime="2024-08-07T20:41:31+08:00">2024-08-07</time>
+    <time title="修改时间：2025-05-29 22:55:50" itemprop="dateModified" datetime="2025-05-29T22:55:50+08:00">2025-05-29</time>
   </span>
-  <span id="2024/08/06/git的使用/" class="item leancloud_visitors" data-flag-title="git的使用" title="阅读次数">
+  <span id="2025/01/01/Novel/Diary/2025年/" class="item leancloud_visitors" data-flag-title="2025年" title="阅读次数">
       <span class="icon">
         <i class="ic i-eye"></i>
       </span>
@@ -246,7 +237,7 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
   </li>
   <li class="link">
     <strong>本文链接：</strong>
-    <a href="https://code-fan007.github.io/2024/08/06/git%E7%9A%84%E4%BD%BF%E7%94%A8/" title="git的使用">https://code-fan007.github.io/2024/08/06/git的使用/</a>
+    <a href="https://code-fan007.github.io/2025/01/01/Novel/Diary/2025%E5%B9%B4/" title="2025年">https://code-fan007.github.io/2025/01/01/Novel/Diary/2025年/</a>
   </li>
   <li class="license">
     <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -265,20 +256,20 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
     <div class="item left">
       
 
-  <a href="/2024/07/20/Embedded/STM32/Stm32%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%80%E7%B3%BB%E5%88%97/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;dlink.host&#x2F;wx1.sinaimg.cn&#x2F;large&#x2F;007WNxAGly8hra3oxwhj1j30xc0m8q8j.jpg" title="STM32单片机一系列">
+  <a href="/2024/12/25/opencv/%E5%9F%BA%E4%BA%8E%E6%89%8B%E9%83%A8%E8%B7%9F%E8%B8%AA%E5%AE%9E%E7%8E%B0%E9%9F%B3%E9%87%8F%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%8E%A7%E5%88%B6/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;dlink.host&#x2F;wx1.sinaimg.cn&#x2F;large&#x2F;007WNxAGly8hra3okv00lj31c00u0qf1.jpg" title="基于手部跟踪实现音量大小的控制">
   <span class="type">上一篇</span>
-  <span class="category"><i class="ic i-flag"></i> Embedded</span>
-  <h3>STM32单片机一系列</h3>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>基于手部跟踪实现音量大小的控制</h3>
   </a>
 
     </div>
     <div class="item right">
       
 
-  <a href="/2024/09/01/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;dlink.host&#x2F;wx3.sinaimg.cn&#x2F;large&#x2F;007WNxAGly8hra3livtspj30p00ixtct.jpg" title="自动控制原理">
+  <a href="/2025/03/10/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;pan.imgbed.link&#x2F;file&#x2F;67540" title="硬件基础">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
-  <h3>自动控制原理</h3>
+  <h3>硬件基础</h3>
   </a>
 
     </div>
@@ -297,9 +288,12 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ssh%E9%85%8D%E7%BD%AE%E5%92%8C%E5%85%8B%E9%9A%86%E4%BB%93%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text"> ssh 配置和克隆仓库</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2025%E5%B9%B43%E6%9C%883%E6%97%A5"><span class="toc-number">1.</span> <span class="toc-text"> 2025 年 3 月 3 日</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2025%E5%B9%B45%E6%9C%886%E6%97%A5"><span class="toc-number">2.</span> <span class="toc-text"> 2025 年 5 月 6 日</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%AE%E5%88%AB%E4%BA%BA%E5%89%8D%E5%85%88%E9%A1%BE%E5%A5%BD%E8%87%AA%E5%B7%B1"><span class="toc-number">2.1.</span> <span class="toc-text"> 帮别人前先顾好自己</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2025%E5%B9%B45%E6%9C%8829%E6%97%A5"><span class="toc-number">3.</span> <span class="toc-text"> 2025 年 5 月 29 日</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A6%81%E6%9C%89%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94"><span class="toc-number">3.1.</span> <span class="toc-text"> 要有被讨厌的勇气</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2023/07/01/Novel/Diary/%E5%A4%A7%E5%AD%A6%E4%B9%8B%E8%B7%AF%E6%B2%88%E9%98%B3%E7%AF%87/" rel="bookmark" title="大学之路沈阳篇">大学之路沈阳篇</a></li><li><a href="/2024/07/01/Novel/my-novel/%E5%90%8D%E4%BA%BA%E5%8A%B1%E5%BF%97%E5%A5%8B%E6%96%97%E5%8F%B2/" rel="bookmark" title="名人励志奋斗史——罗永浩">名人励志奋斗史——罗永浩</a></li><li class="active"><a href="/2025/01/01/Novel/Diary/2025%E5%B9%B4/" rel="bookmark" title="2025年">2025年</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="站点概览">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -388,12 +382,12 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2024/07/20/Embedded/STM32/Stm32%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%80%E7%B3%BB%E5%88%97/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+        <a href="/2024/12/25/opencv/%E5%9F%BA%E4%BA%8E%E6%89%8B%E9%83%A8%E8%B7%9F%E8%B8%AA%E5%AE%9E%E7%8E%B0%E9%9F%B3%E9%87%8F%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%8E%A7%E5%88%B6/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2024/09/01/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E5%8E%9F%E7%90%86/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+        <a href="/2025/03/10/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -417,7 +411,7 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2024/07/01/Novel/Diary/about/" title="about me">about me</a></span>
+    <span><a href="/2024/09/30/c%E8%AF%AD%E8%A8%80%E5%85%B3%E9%94%AE%E5%AD%97%E5%92%8C%E6%9E%9A%E4%B8%BE/" title="c语言关键字和枚举">c语言关键字和枚举</a></span>
   </li>
 
       
@@ -426,7 +420,7 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2024/09/06/%E5%88%B7C%E8%AF%AD%E8%A8%80150%E9%81%93%E9%A2%98%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="刷C语言150道题复习笔记">刷C语言150道题复习笔记</a></span>
+    <span><a href="/2024/10/08/%E7%88%AC%E8%99%AB%E4%B8%80%E7%B3%BB%E5%88%97/" title="爬虫一系列">爬虫一系列</a></span>
   </li>
 
       
@@ -443,18 +437,20 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/PLC/" title="分类于 PLC">PLC</a>
 </div>
 
-    <span><a href="/2024/09/30/c%E8%AF%AD%E8%A8%80%E5%85%B3%E9%94%AE%E5%AD%97%E5%92%8C%E6%9E%9A%E4%B8%BE/" title="c语言关键字和枚举">c语言关键字和枚举</a></span>
+    <span><a href="/2025/05/05/PLC/Smart200/%E5%9F%BA%E4%BA%8ESmart200%E7%9A%84%E5%85%A8%E8%87%AA%E5%8A%A8%E6%B4%97%E8%A1%A3%E6%9C%BA%E6%8E%A7%E5%88%B6/" title="基于Smart200的全自动洗衣机控制">基于Smart200的全自动洗衣机控制</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/Novel/" title="分类于 Novel">Novel</a>
 </div>
 
-    <span><a href="/2024/07/05/Markdown+VSCODE%E5%AE%9E%E7%8E%B0%E6%9C%80%E5%AE%8C%E7%BE%8E%E6%B5%81%E7%95%85%E5%86%99%E4%BD%9C%E4%BD%93%E9%AA%8C/" title="Markdown+VSCODE实现最完美流畅写作体验">Markdown+VSCODE实现最完美流畅写作体验</a></span>
+    <span><a href="/2024/07/01/Novel/my-novel/%E5%90%8D%E4%BA%BA%E5%8A%B1%E5%BF%97%E5%A5%8B%E6%96%97%E5%8F%B2/" title="名人励志奋斗史——罗永浩">名人励志奋斗史——罗永浩</a></span>
   </li>
 
       
@@ -464,25 +460,6 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
 </div>
 
     <span><a href="/2024/12/25/opencv/%E5%9F%BA%E4%BA%8E%E6%89%8B%E9%83%A8%E8%B7%9F%E8%B8%AA%E5%AE%9E%E7%8E%B0%E9%9F%B3%E9%87%8F%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%8E%A7%E5%88%B6/" title="基于手部跟踪实现音量大小的控制">基于手部跟踪实现音量大小的控制</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/Project/" title="分类于 Project">Project</a>
-</div>
-
-    <span><a href="/2024/07/07/Project/%E5%9F%BA%E4%BA%8E%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E5%9B%9B%E8%B6%B3%E6%9C%BA%E5%99%A8%E7%8B%97/" title="基于树莓派的四足机器狗">基于树莓派的四足机器狗</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2024/04/25/opencv/%E5%9F%BA%E4%BA%8Eopenpose%E7%9A%842D%E4%BA%BA%E4%BD%93%E5%A7%BF%E6%80%81/" title="基于手部跟踪实现音量大小的控制">基于手部跟踪实现音量大小的控制</a></span>
   </li>
 
       
@@ -501,7 +478,27 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2025/03/10/%E7%A1%AC%E4%BB%B6%E5%9F%BA%E7%A1%80/" title="硬件基础">硬件基础</a></span>
+    <span><a href="/2024/04/25/opencv/%E5%9F%BA%E4%BA%8Eopenpose%E7%9A%842D%E4%BA%BA%E4%BD%93%E5%A7%BF%E6%80%81/" title="基于手部跟踪实现音量大小的控制">基于手部跟踪实现音量大小的控制</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PLC/" title="分类于 PLC">PLC</a>
+</div>
+
+    <span><a href="/2025/04/05/PLC/S7-1200/S7-1200%20PLC/" title="S7-1200 PLC">S7-1200 PLC</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/PLC/" title="分类于 PLC">PLC</a>
+</div>
+
+    <span><a href="/2025/04/05/PLC/Smart200/SMART200%20PLC/" title="SMART200 PLC">SMART200 PLC</a></span>
   </li>
 
   </ul>
@@ -544,7 +541,7 @@ Fan Lei's Blog = 高级的欲望，只有克制才能达成</title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: '2024/08/06/git的使用/',
+    path: '2025/01/01/Novel/Diary/2025年/',
     favicon: {
       show: "（●´3｀●）やれやれだぜ",
       hide: "(´Д｀)大変だ！"
